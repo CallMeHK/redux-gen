@@ -5,7 +5,6 @@ export interface AllProps {
   state: StateArray;
 }
 const DisplayReducer: React.FC<AllProps> = ({ state }) => {
-  // @ts-ignore
   const reducerState = state.map(
       (rx: State) => `
             ${rx.key}: ${rx.value},`
@@ -25,7 +24,6 @@ const reducer =
 };
 
 export default reducer`;
-// @ts-ignore  
 const reducer: Array<string> = state.map(
       (rx: State) =>
         `

@@ -5,11 +5,10 @@ export interface AllProps {
   state: StateArray;
 }
 const DisplayActions: React.FC<AllProps> = ({ state }) => {
-  // @ts-ignore
   const actionsList = state.map(rx => rx.key.charAt(0).toUpperCase() + rx.key.slice(1))
     .slice(0, -1);
   const actionsFoot: string = `  
-export { ${actionsList.map((elt: State) => `set${elt}`).join(`, `)} }`;
+export { ${actionsList.map((elt: string) => `set${elt}`).join(`, `)} }`;
   const actions: Array<string> = actionsList.map(
     (name: string) =>
       `

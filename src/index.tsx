@@ -15,9 +15,7 @@ export interface State {
   value: string;
 }
 
-export interface StateArray {
-  [index: number]: State;
-}
+export type StateArray = State[]
 
 const App: React.FC = () => {
   const [state, setState] = useState<StateArray>([
@@ -33,7 +31,6 @@ const App: React.FC = () => {
       addBlank = true;
     }
     setState(elt => {
-      // @ts-ignore
       let inputs = elt.map((melt, j) =>
         i === j
           ? {
@@ -50,7 +47,6 @@ const App: React.FC = () => {
     e.persist();
     if (state[i].key !== "") {
       setState(elt =>
-        // @ts-ignore
         elt.map((melt, j) =>
           i === j
             ? {
@@ -62,7 +58,6 @@ const App: React.FC = () => {
       );
     }
   };
-// @ts-ignore
   const inputs: any = state.map((st, i) => (
     <div key={"stateInput" + i}>
       <input value={st.key} onChange={e => changeKey(e, i)} />:{" "}
